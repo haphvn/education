@@ -1,0 +1,55 @@
+.page-course-list-3 .panel-col-seventy .panel-separator {
+    margin-bottom: 50px;
+}
+
+.top-main-nav-mobile {
+    float: right;
+}
+
+.page-about-2 .pane-bean-about-2-0 {
+    margin-bottom: 50px;
+}
+
+.view-display-id-our_research {
+    margin-top: 50px;
+}
+
+.text-desc {
+    margin-bottom: -160px !important;
+}
+
+.search-results {
+    padding: 0;
+}
+
+.pane-pane-messages {
+    background-color: #ececec;
+    padding: 20px 70px;
+}
+
+.entry-event-box .field-name-field-image {
+    margin-bottom: 25px;
+}
+
+/* load more button */
+.pager-load-more {
+    text-align: center !important;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-family: "Raleway", sans-serif;
+    display: block;
+    background-color: #f2f4f5;
+    padding: 8px 15px !important;
+    margin-top: 55px !important;
+}
+.pager-load-more {
+    cursor: pointer;
+}
+.pager-load-more li a {
+    background: none;
+    border: none;
+}
+.pager-load-more-empty {
+    background: none;
+}
+

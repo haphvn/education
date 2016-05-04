@@ -1,0 +1,193 @@
+<?php
+/**
+ * Created by haph on 12/7/15
+ */
+
+/**
+ * Implements hook_init().
+ */
+function edu_init()
+{
+    module_load_include('inc', 'edu', 'includes/common');
+    module_load_include('inc', 'edu', 'includes/content');
+    module_load_include('inc', 'edu', 'includes/model');
+    module_load_include('inc', 'edu', 'edu.block');
+    module_load_include('inc', 'edu', 'edu.form');
+}
+
+/**
+ * Implements hook_menu().
+ */
+function edu_menu()
+{
+    $items['custom/search/%'] = array(
+        'page callback' => 'kopa_courses_do_search',
+        'page arguments' => array(2),
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['custom/node/search/%'] = array(
+        'page callback' => 'kopa_node_do_search',
+        'page arguments' => array(3),
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function edu_theme()
+{
+    return array(
+        'hero_banner' => array(
+            'template' => 'hero_banner',
+            'variables' => array('hero_banner' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates',
+        ),
+        'recent_posts' => array(
+            'template' => 'recent_posts',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/block',
+        ),
+        'blog_categories' => array(
+            'template' => 'blog_categories',
+            'variables' => array('tids' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/block',
+        ),
+        'related_posts' => array(
+            'template' => 'related_posts',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/block',
+        ),
+
+        'professors_list_1' => array(
+            'template' => 'professors_list_1',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/professors',
+        ),
+        'professors_list_2' => array(
+            'template' => 'professors_list_2',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/professors',
+        ),
+        'portfolio_list_1' => array(
+            'template' => 'portfolio_list_1',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/portfolio',
+        ),
+        'portfolio_list_2' => array(
+            'template' => 'portfolio_list_2',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/portfolio',
+        ),
+        'portfolio_list_3' => array(
+            'template' => 'portfolio_list_3',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/portfolio',
+        ),
+
+        'blog_list_1' => array(
+            'template' => 'blog_list_1',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/blog',
+        ),
+        'blog_list_2' => array(
+            'template' => 'blog_list_2',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/blog',
+        ),
+
+        'event_list_3' => array(
+            'template' => 'event_list_3',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/events',
+        ),
+        'event_list_4' => array(
+            'template' => 'event_list_4',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/events',
+        ),
+
+        'courses_list_4' => array(
+            'template' => 'courses_list_4',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/courses',
+        ),
+
+        'courses_list_5' => array(
+            'template' => 'courses_list_5',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/courses',
+        ),
+
+        'courses_list_6' => array(
+            'template' => 'courses_list_6',
+            'variables' => array('nodes' => NULL),
+            'path'      => drupal_get_path('module', 'edu') . '/templates/courses',
+        ),
+    );
+}
+
+/**
+ * Implements hook_page_build()
+ */
+function edu_page_build(&$page)
+{
+    //check if 404
+    $status = drupal_get_http_header("Status");
+    if ($status == "404 Not Found") {
+        unset($_GET['destination']);
+        drupal_goto('404-error');
+    }
+}
+
+/**
+ * Debugging
+ * @param $query
+ */
+function edu_query_alter($query) {
+    if ($query->hasTag('efq_debug') && module_exists('devel')) {
+        dpm((string) $query);
+        dpm($query->arguments());
+    }
+}
+
+/**
+ * Courses Search
+ * @param $keyword
+ * @return string
+ * @throws Exception
+ */
+function kopa_courses_do_search($keyword) {
+    // set the page title
+    drupal_set_title(t('Courses search results'));
+    // get the search results
+    $results = module_invoke('node', 'search_execute', $keyword . " type:" . BUNDLE_COURSES);
+    return theme('search_results', array('results' => $results));
+}
+
+/**
+ * Common node search
+ * @param $keyword
+ * @return string
+ * @throws Exception
+ */
+function kopa_node_do_search($keyword) {
+    // set the page title
+    drupal_set_title(t('Node search results'));
+    // get the search results
+    $results = module_invoke('node', 'search_execute', $keyword);
+    return theme('search_results', array('results' => $results));
+}
+
+/**
+ * @param $build
+ */
+function edu_comment_view_alter(&$build){
+    // unset anchor for each comment.
+    unset($build['#prefix']);
+}

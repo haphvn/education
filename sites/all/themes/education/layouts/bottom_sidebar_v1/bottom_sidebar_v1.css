@@ -1,0 +1,41 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+    .panel-3col-33 {
+        /*  overflow: hidden;  */
+    }
+
+    .panel-3col-33 .panel-col-first {
+        float: left;
+        width: 33%;
+    }
+
+    .panel-3col-33 .panel-col-first .inside {
+        margin: 0 .5em 1em 0;
+    }
+
+    .panel-3col-33 .panel-col {
+        float: left;
+        width: 33%;
+    }
+
+    .panel-3col-33 .panel-col .inside {
+        margin: 0 .5em 1em .5em;
+    }
+
+    .panel-3col-33 .panel-col-last {
+        float: left;
+        width: 33%;
+    }
+
+    .panel-3col-33 .panel-col-last .inside {
+        margin: 0 0 1em .5em;
+    }
+
+    .panel-3col-33 .panel-separator {
+        margin: 0 0 1em 0;
+    }
+}
+

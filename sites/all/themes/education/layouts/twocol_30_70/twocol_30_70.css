@@ -1,0 +1,29 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    .panel-col-thirty {
+        width: 30%;
+        float: left;
+    }
+
+    .panel-col-seventy {
+        width: 70%;
+        float: right;
+    }
+
+    .panel-col-center {
+        width: 70%;
+        float: left;
+    }
+
+    .panel-col-right {
+        width: 30%;
+        float: right;
+    }
+
+    .panel-col-top, .panel-col-bottom {
+        width: 100%;
+        clear: both;
+    }
+}

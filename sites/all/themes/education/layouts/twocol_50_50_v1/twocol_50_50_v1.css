@@ -1,0 +1,49 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+    .panel-2col {
+        /*  overflow: hidden;  */
+    }
+
+    .panel-2col .panel-col-first-50-50-v1 {
+        float: left;
+        width: 50%;
+    }
+
+    * html .panel-2col .panel-col-first {
+        width: 49.9%;
+    }
+
+    .panel-2col .panel-col-first .inside {
+        margin: 0 .5em 1em 0;
+    }
+
+    .panel-2col .panel-col-last-50-50-v1 {
+        float: left;
+        width: 50%;
+    }
+
+    * html .panel-2col .panel-col-last {
+        width: 49.9%;
+    }
+
+    .panel-2col .panel-col-last .inside {
+        margin: 0 0 1em .5em;
+    }
+
+    #panels-edit-display .panel-pane,
+    #panels-edit-display .helperclass {
+        margin: .5em;
+    }
+
+    .panel-2col .panel-separator {
+        margin: 0 0 1em 0;
+    }
+
+    .panel-2col .panel-col-bottom-50-50-v1 {
+        width: 100%;
+        clear: both;
+    }
+}

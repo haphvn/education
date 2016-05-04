@@ -1,0 +1,9 @@
+name = Config Others Menu
+description = 20160127
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = menu-others-menu

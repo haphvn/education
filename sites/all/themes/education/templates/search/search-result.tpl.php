@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Default theme implementation for displaying a single search result.
+ *
+ * This template renders a single search result and is collected into
+ * search-results.tpl.php. This and the parent template are
+ * dependent to one another sharing the markup for definition lists.
+ *
+ * Available variables:
+ * - $url: URL of the result.
+ * - $title: Title of the result.
+ * - $snippet: A small preview of the result. Does not apply to user searches.
+ * - $info: String of all the meta information ready for print. Does not apply
+ *   to user searches.
+ * - $info_split: Contains same data as $info, split into a keyed array.
+ * - $module: The machine-readable name of the module (tab) being searched, such
+ *   as "node" or "user".
+ * - $title_prefix (array): An array containing additional output populated by
+ *   modules, intended to be displayed in front of the main title tag that
+ *   appears in the template.
+ * - $title_suffix (array): An array containing additional output populated by
+ *   modules, intended to be displayed after the main title tag that appears in
+ *   the template.
+ *
+ * Default keys within $info_split:
+ * - $info_split['module']: The module that implemented the search query.
+ * - $info_split['user']: Author of the node linked to users profile. Depends
+ *   on permission.
+ * - $info_split['date']: Last update of the node. Short formatted.
+ * - $info_split['comment']: Number of comments output as "% comments", %
+ *   being the count. Depends on comment.module.
+ *
+ * Other variables:
+ * - $classes_array: Array of HTML class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $title_attributes_array: Array of HTML attributes for the title. It is
+ *   flattened into a string within the variable $title_attributes.
+ * - $content_attributes_array: Array of HTML attributes for the content. It is
+ *   flattened into a string within the variable $content_attributes.
+ *
+ * Since $info_split is keyed, a direct print of the item is possible.
+ * This array does not apply to user searches so it is recommended to check
+ * for its existence before printing. The default keys of 'type', 'user' and
+ * 'date' always exist for node searches. Modules may provide other data.
+ * @code
+ *   <?php if (isset($info_split['comment'])): ?>
+ *     <span class="info-comment">
+ *       <?php print $info_split['comment']; ?>
+ *     </span>
+ *   <?php endif; ?>
+ * @endcode
+ *
+ * To check for all available data within $info_split, use the code below.
+ * @code
+ *   <?php print '<pre>'. check_plain(print_r($info_split, 1)) .'</pre>'; ?>
+ * @endcode
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_search_result()
+ * @see template_process()
+ *
+ * @ingroup themeable
+ */
+$title = $variables['result']['node']->field_title['und'][0]['value'];
+$field_courses = $variables['result']['node']->field_courses['und'];
+$total = $GLOBALS['pager_total_items'][0];
+?>
+
+<div class="widget kopa-course-list-3-widget">
+    <?php if ($variables['id'] == 1) : ?>
+    <div class="kopa-result-search">Found <span><?php print ($total > 1) ? $total . ' Courses' : $total . ' Course' ?></span> according to your search...</div>
+    <?php endif ?>
+    <h4 class="widget-title widget-title-s10"><?php print $title ?></h4>
+
+    <div class="kopa-course-list-table">
+
+        <div class="table-header clearfix">
+
+            <div class="stt-col">ID</div>
+
+            <div class="name-col">Course Name</div>
+
+            <div class="duration-col">Duration</div>
+
+            <div class="date-col">Start Date</div>
+
+        </div>
+        <!-- table-header -->
+
+        <ul class="table-list">
+            <?php
+            foreach ($field_courses as $idx => $value) :
+                $item = field_collection_item_load($value['value']);
+                $start_date = $item->field_start_date['und'][0]['value'];
+                $title = $item->field_title['und'][0]['value'];
+                $id = $item->field_id['und'][0]['value'];
+                $duration = $item->field_duration['und'][0]['value'];
+                ?>
+            <li class="clearfix">
+                <div class="stt-col"><?php print $id ?></div>
+
+                <div class="name-col"><a href="#"><?php print $title ?></a></div>
+
+                <div class="duration-col"><?php print $duration ?></div>
+
+                <div class="date-col"><?php print date('D, M d - Y', $start_date) ?></div>
+            </li>
+            <?php endforeach ?>
+        </ul>
+        <!-- table-list -->
+
+    </div>
+    <!-- kopa-course-list-table -->
+
+</div>
+<!-- kopa-course-list-table -->

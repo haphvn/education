@@ -1,0 +1,30 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    .panel-col-thirty {
+        width: 30%;
+        float: right;
+    }
+    .panel-col-seventy {
+        width: 70%;
+        float: left;
+    }
+
+    .panel-top, .panel-bottom {
+        width: 100%;
+        clear: both;
+    }
+
+    /* Margins taken from the Panels module plugins */
+    .lastUnit .inside {
+        margin: 0 0 1em .5em;
+    }
+    .firstUnit .inside {
+        margin: 0 .5em 1em 0;
+    }
+    .unit .inside {
+        margin: 0 .5em 1em .5em;
+    }
+}
+

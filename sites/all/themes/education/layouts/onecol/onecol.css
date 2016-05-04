@@ -1,0 +1,19 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    .panel-col-top, .panel-col-middle, .panel-col-bottom {
+        width: 100%;
+        clear: both;
+    }
+
+    .panel-col-top,
+    .panel-col-middle,
+    .panel-col-bottom .inside {
+        /*margin: 1em 0 1em 0;*/
+    }
+
+    .panel-separator {
+        /*margin: 0 0 1em 0;*/
+    }
+}

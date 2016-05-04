@@ -1,0 +1,53 @@
+name = Education
+description = Use for Drupal education theme, etc.
+core = 7.x
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[header_logo]            = Header Logo
+regions[header_top]             = Header Top
+regions[header_bottom]          = Header Bottom
+regions[content]                = Main Content
+regions[sidebar_first]          = Sidebar First
+regions[sidebar_second]         = Sidebar Second
+regions[bottom_firstcolumn]     = Bottom First
+regions[bottom_secondcolumn1]   = Bottom Second 1
+regions[bottom_secondcolumn2]   = Bottom Second 2
+regions[bottom_thirdcolumn1]    = Bottom Third 1
+regions[bottom_thirdcolumn2]    = Bottom Third 2
+regions[footer]                 = Footer
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = css/font-awesome.min.css
+stylesheets[all][] = css/superfish.css
+stylesheets[all][] = css/owl.carousel.css
+stylesheets[all][] = css/owl.theme.css
+stylesheets[all][] = css/jquery.navgoco.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/responsive.css
+
+stylesheets[all][] = css/custom.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+
+scripts[] = js/modernizr.custom.js
+scripts[] = js/jquery-1.11.1.min.js
+scripts[] = js/bootstrap.min.js
+scripts[] = js/custom.js
+
+
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+plugins[panels][layouts] = layouts
+
+; We provide default page manager pages for our site template.
+api[page_manager][pages_default][version] = 1
+api[page_manager][pages_default][path] = pages

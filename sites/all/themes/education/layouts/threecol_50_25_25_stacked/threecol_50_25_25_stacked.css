@@ -1,0 +1,60 @@
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    .panel-3col-stacked {
+        /*  overflow: hidden;  */
+    }
+
+    .panel-3col-stacked .panel-col-top,
+    .panel-3col-stacked .panel-col-bottom,
+    .panel-3col-stacked .panel-col-center-bottom {
+        width: 100%;
+        clear: both;
+    }
+
+    .panel-3col-stacked .panel-col-top .inside {
+        margin-bottom: .5em;
+    }
+
+    .panel-3col-stacked .panel-col-left {
+        float: left;
+        width: 75%;
+    }
+
+    .panel-3col-stacked .panel-col-left .inside {
+        margin: 0 .5em 1em 0;
+    }
+
+    .panel-3col-stacked .panel-col {
+        /*float: left;*/
+        /*width: 100%;*/
+    }
+
+    .panel-3col-stacked .panel-col .inside {
+        margin: 0 .5em 1em .5em;
+    }
+
+    .panel-3col-stacked .panel-col-right {
+        float: right;
+        width: 25%;
+    }
+
+    .panel-3col-stacked .panel-col-right .inside {
+        margin: 0 0 1em .5em;
+    }
+
+    .panel-3col-stacked .panel-separator {
+        /*margin: 0 0 1em 0;*/
+    }
+
+    .left-col {
+        width: 70%;
+        float: left;
+    }
+
+    .right-col {
+        width: 30%;
+        float: right;
+    }
+}

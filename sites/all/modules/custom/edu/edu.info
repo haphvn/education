@@ -1,0 +1,4 @@
+name = Education
+description = Extend functionality for this site.
+package = Kopatheme
+core = 7.x
